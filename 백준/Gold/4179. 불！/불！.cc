@@ -94,7 +94,7 @@ void solve(){
     for(int i = 0; i < n; i++){
       for(int j = 0; j < m; j++){
         if(i == 0 || i == n-1 || j == 0 || j == m-1){
-          if((dist[i][j] < firedist[i][j] && firevisited[i][j]) || (!firevisited[i][j] && isvisited[i][j] )) ans.push_back(dist[i][j]+1);
+          if((dist[i][j] < firedist[i][j] && firevisited[i][j] && isvisited[i][j]) || (!firevisited[i][j] && isvisited[i][j] )) ans.push_back(dist[i][j]+1);
         }
       }
     }
