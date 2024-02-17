@@ -41,6 +41,7 @@ void solve(){
     
     map<int, int> m;
     vector<int> v;
+    set<int> s;
 
     int n;
     cin >> n;
@@ -49,18 +50,17 @@ void solve(){
         int a;
         cin >> a;
 
-        m[a]++;
+        s.insert(a);
         v.pb(a);
     }
 
+    int idx = 0;
+    for(auto item : s){
+        m[item] = idx++;
+    }
 
-    
-    for(int i = 0; i < n; i++){
-        int sum = 0;
-        for(auto iter = m.begin(); iter -> first != v[i]; iter++){
-            sum++;
-        }
-        cout << sum << " ";
+    for(int i = 0; i < v.size(); i++){
+        cout << m[v[i]] << " ";
     }
     cout << endl;
 }
@@ -75,39 +75,11 @@ void print(){
     }
 }
 
-// int main(){
-//   solve();
+int main(){
+     ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
+
+  solve();
     
-//  }
-
-int main() {
-    int N;
-    cin >> N;
-
-    vector<int> X(N), compressedX(N);
-    for (int i = 0; i < N; i++) {
-        cin >> X[i];
-    }
-
-    // 좌표 복사 및 정렬
-    vector<int> sortedX(X);
-    sort(sortedX.begin(), sortedX.end());
-    
-    // 중복 제거
-    sortedX.erase(unique(sortedX.begin(), sortedX.end()), sortedX.end());
-
-    // 좌표-압축된 값 매핑
-    map<int, int> compressMap;
-    for (int i = 0; i < sortedX.size(); i++) {
-        compressMap[sortedX[i]] = i;
-    }
-
-    // 원본 좌표에 압축된 값을 매핑
-    for (int i = 0; i < N; i++) {
-        compressedX[i] = compressMap[X[i]];
-        cout << compressedX[i] << " ";
-    }
-    cout << endl;
-
-    return 0;
-}
+ }
